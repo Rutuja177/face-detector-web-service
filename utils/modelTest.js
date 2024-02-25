@@ -11,20 +11,27 @@ const canvas = require('canvas');
 
 faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 
-async function detectFaces(image){
-    // Load face detection models
+async function detectFaces(image, progressCallback){
+    
+  // Load face detection models
   await faceapi.nets.faceRecognitionNet.loadFromDisk(__dirname + "/models");
   await faceapi.nets.faceLandmark68Net.loadFromDisk(__dirname + "/models");
   await faceapi.nets.ssdMobilenetv1.loadFromDisk( __dirname + "/models");
 
   // console.log(Object.keys(faceapi.nets))
 
+  //Decode base64 image data to buffer
   const imageBuffer = Buffer.from(image, 'base64')
 
   const img = new Image();
   img.src = imageBuffer
 
+  progressCallback('Face detection models is loaded')
+  
+  //face detection on the image
   const detection = await faceapi.detectAllFaces(img);
+
+  progressCallback('Face detection available')
 
   return detection.length;
 }

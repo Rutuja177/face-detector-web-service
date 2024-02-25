@@ -1,0 +1,62 @@
+# Face-Detection OpenAPI
+
+openapi: 3.0.1
+
+info:
+  title: OpenAPI specification for Face-detection web service
+  version: '1.2'
+  
+servers:
+  - url: http://localhost:{port}/api/face-detection
+    variables:
+      port:
+        enum:
+          - "3000"
+          - "8000"
+        default: !!str 3000
+        
+tags:
+  - name: Face-detection
+    description: web service using any embedded face detection library to count faces in an image
+    
+paths:
+  /detection:
+    summary: Operations about face detection requests
+    get:
+      tags:
+        - Face-detection
+      summary: Get all face detection requests
+      responses:
+        200:
+          description: Success
+        404:
+          description: No face detection record found
+        500:
+          description: Internal server error
+    post:
+      tags:
+        - Face-detection
+      summary: Creat a new face detection request
+      responses:
+        201:
+          description: Face detection request created successfully
+        500:
+          description: Internal server error
+  /detection/{id}:
+    summary: Delete a face detection request by ID
+    parameters:
+      - in: path
+        name: id
+        required: true
+        description: Id of the face detection request to delete
+        schema:
+          type: integer
+    delete:
+      tags:
+        - Face-detection
+      summary: delete a face detection request
+      responses:
+        201:
+          description: ${id} deleted
+        500:
+          description: Internal server error

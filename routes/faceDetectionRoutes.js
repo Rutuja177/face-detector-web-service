@@ -10,6 +10,6 @@ router.get('/', (req, res)=>{
 router.post('/detection', faceDetectionController.createFaceDetectionRequest);
 router.get('/detection/:id', faceDetectionController.getFaceDetectionRequest);
 router.get('/detection',faceDetectionController.getAllFaceDetectionRequest );
-router.delete('detection/:id', faceDetectionController.deleteFaceDetectionRequest)
+router.delete('/detection/:id', faceDetectionController.deleteFaceDetectionRequest)
 
 module.exports = router
