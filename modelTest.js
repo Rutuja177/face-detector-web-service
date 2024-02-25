@@ -19,4 +19,4 @@ async function detectFaces(){
 
   console.log(Object.keys(faceapi.nets))
 }
-detectFaces()
+module.exports = detectFaces;
