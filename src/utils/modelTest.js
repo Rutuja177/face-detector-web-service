@@ -3,11 +3,9 @@ const cors = require('cors');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-
 const faceapi = require('face-api.js');
-
 const { Canvas, Image, ImageData } = require('canvas');
-const canvas = require('canvas');
+
 
 faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 
@@ -26,12 +24,12 @@ async function detectFaces(image, progressCallback){
   const img = new Image();
   img.src = imageBuffer
 
-  progressCallback('Face detection models is loaded')
+  progressCallback(`Face detection models are loading.`);
   
   //face detection on the image
   const detection = await faceapi.detectAllFaces(img);
 
-  progressCallback('Face detection available')
+  progressCallback(`Face detection count is available for image.`);
 
   return detection.length;
 }

@@ -1,5 +1,5 @@
 class FaceDetectionRequest{
-    constructor(image, status, result){
+    constructor(image, result){
         this.image = image;
         this.result = result;
     }

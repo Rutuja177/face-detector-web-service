@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const faceDetectionRoutes = require('./routes/faceDetectionRoutes');
-const { initialize } = require('express-openapi');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,9 +15,3 @@ app.use('/api/face-detection', faceDetectionRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-//OpenAPI routes
-initialize({
-    apiDoc: require("./api-doc"),
-    paths:'./api/paths',
-})

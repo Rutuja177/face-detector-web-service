@@ -8,7 +8,6 @@ router.get('/', (req, res)=>{
 }) //health-check api
 
 router.post('/detection', faceDetectionController.createFaceDetectionRequest);
-router.get('/detection/:id', faceDetectionController.getFaceDetectionRequest);
 router.get('/detection',faceDetectionController.getAllFaceDetectionRequest );
 router.delete('/detection/:id', faceDetectionController.deleteFaceDetectionRequest)
 
